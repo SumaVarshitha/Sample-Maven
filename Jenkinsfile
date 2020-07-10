@@ -1,5 +1,8 @@
-@Library('shlib')_
-pipeline {
+@Library(['shlib@master'])_
+pipeline {}
+	 
+  /*  pipeline {
+	
 	 
     agent any
   
@@ -7,7 +10,7 @@ pipeline {
 	    stage('clonestage'){
 		    steps{
 		  // sh 'rm -rf assessmentdocker' 
-	        //sh 'git clone https://github.com/SumaVarshitha/Sample-Maven.git'
+	        //sh 'git clone https://github.com/SumaVarshitha/assessmentdocker.git'
 		    clonerepo()
 		    }}
 		 
@@ -25,28 +28,28 @@ pipeline {
         
         stage('SonarQube Analysis'){
 		
-		 environment{
-               sonarscanner = tool 'sonars'
-                   }
+		 //environment{
+               //scannerHome = tool 'sonars'
+                   //}
           steps{
-           withSonarQubeEnv('sonar'){
+           //withSonarQubeEnv('sonar'){
                    // sh '${sonarscanner}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties'
 		     // sh "${scannerHome}/bin/sonar-scanner"
-            sh "${sonarscanner}/bin/sonar-scanner -Dsonar.projectKey=SumaVarshitha_Sample-Maven -Dsonar.organization=sumavarshitha -Dsonar.projectName=Sample-Maven -Dsonar.projectVersion=1.0 -Dsonar.language=java -Dsonar.sources=src -Dsonar.java.binaries=. -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=23c3c4a2d8cdc3f94ecc357df8d681a601cb48f6 -Dsonar.java.coveragePlugin=jacoco -Dsonar.sourceEncoding=UTF-8 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
-		    //sonarqube()
-	       }
+           // sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=SumaVarshitha_assessmentdocker -Dsonar.organization=sumavarshitha -Dsonar.projectName=assessmentdocker -Dsonar.projectVersion=1.0  -Dsonar.language=java -Dsonar.sources=. -Dsonar.java.binaries=. -Dsonar.host.url=https://sonarcloud.io/ -Dsonar.login=23c3c4a2d8cdc3f94ecc357df8d681a601cb48f6 -Dsonar.java.coveragePlugin=jacoco -Dsonar.sourceEncoding=UTF-8 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.exclusions=**/*.html,**/*.css,**/*.js,**/*.xml,src/test/java/com/puppet/sample/PolyglotTest.java"
+		    sonarqube()
+	       //}
             }
        }
 
     
         
-     /* stage("Quality Gate") {
+      stage("Quality Gate") {
             steps {
             // timeout(time: 3, unit: 'MINUTES') {
              //  waitForQualityGate abortPipeline: true
 		    qualitygate()
              // }
            }
-        }*/
+        }
     }
-}
+}*/
